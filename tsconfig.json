@@ -15,6 +15,6 @@
 
     "verbatimModuleSyntax": false
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "srcs/game_info.js"],
   "exclude": ["node_modules", "dist", "prisma"]
 }
