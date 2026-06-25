@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Answer {
-  id                              String   @id @db.Uuid
+  id                              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   text                            String?
   game_id                         String?  @db.Uuid
   player_id                       String?  @db.Uuid
@@ -18,7 +18,7 @@ model Answer {
 }
 
 model Game {
-  id                          String   @id @db.Uuid
+  id                          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   room_codes                  String?
   letters                     String?
   category                    String?
@@ -30,7 +30,7 @@ model Game {
 }
 
 model Player {
-  id                              String   @id @db.Uuid
+  id                              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   username                        String?
   game_id                         String?  @db.Uuid
   answers                         String?  @db.Uuid
