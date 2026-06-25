@@ -1,5 +1,5 @@
 import express from "express";
-const app = express();
+
 const http = require('http');
 const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type' : 'text/html'});
@@ -16,3 +16,14 @@ const port = 8080;
 server.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
+
+const app = express();
+const gamesRouter = require("./games");
+const answersRouter = require("./answers");
+
+app.use(express.json());
+
+app.use("/games", gamesRouter);
+app.use("/answers", answersRouter);
+
+module.exports = app;
