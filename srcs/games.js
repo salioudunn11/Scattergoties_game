@@ -32,3 +32,16 @@ router.post("/", async (req, res, next) => {
         return next(err);
     }
 });
+
+router.get("/", async (req,res,next) => {
+    try {
+        const games = await prisma.game.findMany({
+            select: {roomCode: true, letter: true, topic: true},
+        });
+        return res.json(games);
+    } catch (err) {
+        return next(err);
+    }
+});
+
+module.exports = router;
