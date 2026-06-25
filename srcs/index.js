@@ -18,8 +18,8 @@ server.listen(port, () => {
 });
 
 const app = express();
-const gamesRouter = require("./games");
-const answersRouter = require("./answers");
+const gamesRouter = require("/games");
+const answersRouter = require("/answers");
 
 app.use(express.json());
 
