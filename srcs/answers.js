@@ -7,14 +7,19 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
     try{
         const {room_codes, player_id, text} = req.body;
-
+        
         if (typeof room_codes !== "string" || room_codes.trim() === ""){
             return req.status (400).json({error: "roomCode is required"});
         }
+        // player_id = username
+
         if (typeof player_id !== "string" || player_id.trim() === ""){
             return req.status (400).json({error: "username is required"});
             
         }
+
+        // text = answer
+
         if (typeof text !== "string" || text.trim() === ""){
             return req.status (400).json({error: "answers is required"});
 
@@ -44,7 +49,14 @@ router.post("/", async (req, res, next) => {
                 text: clean_answer,
             },
         });
-
-
+        res.status(201).json({ accepted: true });
+    } catch (err) {
+        if ((err as {code?: string }).code === "P2002"){
+            res.status(409).json({ error: "Answer already taken"});
+            return;
+        }
+        next(err);
     }
-})
+});
+
+export default router;
