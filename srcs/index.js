@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 const express = require("express");   //all commonjs
 const gamesRouter = require("./games.js");
 const answersRouter = require("./answers.js")
+=======
+import express from "express";
+import gamesRouter from "./games.js";
+import answersRouter from "./answers.js";
+// import dbRouter from "./db.js";
+>>>>>>> 160cfab (Idk)
 
 const app = express();
 

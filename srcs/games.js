@@ -1,6 +1,11 @@
 const express = require("express");
+<<<<<<< HEAD
 const prisma = require("./db");
 const { LETTERS, CATEGORY, pick} = require("./game_info");
+=======
+const prisma = require("./db.js");
+const { LETTERS, CATEGORY, pick} = require("/game_info");
+>>>>>>> 160cfab (Idk)
 
 const router = express.Router();
 
