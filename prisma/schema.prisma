@@ -7,36 +7,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Game {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  roomCode  String   @unique
+  letters   String
+  category  String
+  answers   Answer[]
+  createdAt DateTime @default(now())
+}
 
 model Answer {
-  id                              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  text                            String?
-  game_id                         String?  @db.Uuid
-  player_id                       String?  @db.Uuid
-  Game                            Game?    @relation(fields: [game_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Player_Answer_player_idToPlayer Player?  @relation("Answer_player_idToPlayer", fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Player_Player_answersToAnswer   Player[] @relation("Player_answersToAnswer")
-}
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  text      String
+  username  String
+  gameId    String   @db.Uuid
+  game      Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 
-model Game {
-  id                          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  room_codes                  String?
-  letters                     String?
-  category                    String?
-  players                     String?  @db.Uuid
-  answers                     String?  @db.Uuid
-  Answer                      Answer[]
-  Player_Game_playersToPlayer Player?  @relation("Game_playersToPlayer", fields: [players], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Player_Player_game_idToGame Player[] @relation("Player_game_idToGame")
-}
-
-model Player {
-  id                              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  username                        String?
-  game_id                         String?  @db.Uuid
-  answers                         String?  @db.Uuid
-  Answer_Answer_player_idToPlayer Answer[] @relation("Answer_player_idToPlayer")
-  Game_Game_playersToPlayer       Game[]   @relation("Game_playersToPlayer")
-  Answer_Player_answersToAnswer   Answer?  @relation("Player_answersToAnswer", fields: [answers], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  Game_Player_game_idToGame       Game?    @relation("Player_game_idToGame", fields: [game_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  @@unique([gameId, text])
 }

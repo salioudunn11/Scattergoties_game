@@ -45,10 +45,12 @@ router.post("/", async (req, res, next) => {
 
         await prisma.answer.create({
             data: {
-                game_id: game.id,
+                gameId: game.id,
+                username: username.trim(),
                 text: clean_text,
             },
         });
+
         res.status(201).json({ accepted: true });
     } 
         catch (err) {
