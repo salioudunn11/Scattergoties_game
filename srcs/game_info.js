@@ -17,4 +17,4 @@ function pick(list) {
   return list[index];
 }
 
-module.exports = { LETTERS, TOPICS, pick };
+module.exports = { LETTERS, CATEGORY, pick };
