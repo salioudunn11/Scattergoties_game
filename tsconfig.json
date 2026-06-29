@@ -4,8 +4,8 @@
     "module": "commonjs",
     "lib": ["ES2020"],
 
-    "rootDir": "./src",
-    "outDir": "./dist",
+    "rootDir": "srcs",
+    "outDir": "dist",
 
     "strict": true,
     "esModuleInterop": true,
@@ -15,6 +15,5 @@
 
     "verbatimModuleSyntax": false
   },
-  "include": ["src/**/*", "srcs/game_info.js"],
-  "exclude": ["node_modules", "dist", "prisma"]
+  "include": ["srcs/**/*.ts"]
 }
