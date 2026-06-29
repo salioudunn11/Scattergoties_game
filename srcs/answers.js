@@ -54,7 +54,7 @@ router.post("/", async (req, res, next) => {
     } 
         catch (err) {
         
-            if ((err as {code?: string }).code === "P2002"){
+            if (err.code === "P2002"){
             res.status(409).json({ error: "Answer already taken"});
             return;
         }
