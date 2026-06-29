@@ -1,6 +1,6 @@
 
-const express = require("express");
-const prisma = require("./db");
+import express from "express";
+import prisma from "./db.js";
 const router = express.Router();
 
 
@@ -62,4 +62,4 @@ router.post("/", async (req, res, next) => {
     }
 });
 
-module.exports = router;
+export default router;
