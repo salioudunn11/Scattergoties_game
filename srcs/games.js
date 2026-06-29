@@ -6,24 +6,25 @@ const router = express.Router();
 
 router.post("/", async (req, res, next) => {
     try {
-        const roomCode = req.body;
+        const room_code = req.body;
 
-        if (typeof roomCode !== "string" || roomCode.trim() === "") {
+        if (typeof room_code !== "string" || room_code.trim() === "") {
             return res.status(400).json({error: "Missing roomcode"});
         }
 
+        // topic = category
         const game = await prisma.game.create({
             data: {
-                roomCode: roomCode.trim(),
-                letter: pick(LETTERS),
-                topic: pick(TOPICS),
+                room_code: room_code.trim(),
+                letters: pick(LETTERS),
+                category: pick(CATEGORY),
             },
         });
 
         return res.status(201).json({
-            roomCode: game.roomCode,
-            letter: game.letter,
-            topic: game.topic,
+            room_code: game.room_code,
+            letters: game.letters,
+            category: game.category,
         });
     } catch (err) {
         if (err.code === "P2002") {
@@ -36,7 +37,7 @@ router.post("/", async (req, res, next) => {
 router.get("/", async (req,res,next) => {
     try {
         const games = await prisma.game.findMany({
-            select: {roomCode: true, letter: true, topic: true},
+            select: {room_code: true, letters: true, category: true},
         });
         return res.json(games);
     } catch (err) {
