@@ -1,6 +1,6 @@
-import express from "express";
-import gamesRouter from "games.js";
-import answersRouter from "answers.js";
+const express = require("express");   //all commonjs
+const gamesRouter = require("./games.js");
+const answersRouter = require("./answers.js")
 
 const app = express();
 
