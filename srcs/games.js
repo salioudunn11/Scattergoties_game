@@ -1,6 +1,6 @@
 const express = require("express");
-const prisma = require("/db");
-const { LETTERS, CATEGORY, pick} = require("/game_info");
+const prisma = require("./db");
+const { LETTERS, CATEGORY, pick} = require("./game_info");
 
 const router = express.Router();
 

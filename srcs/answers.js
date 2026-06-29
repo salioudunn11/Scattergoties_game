@@ -1,6 +1,6 @@
 
 const express = require("express");
-const prisma = require("/db");
+const prisma = require("./db");
 const router = express.Router();
 
 
@@ -22,7 +22,7 @@ router.post("/", async (req, res, next) => {
         // text = answer
 
         if (typeof text !== "string" || text.trim() === ""){
-            return req.status (400).json({error: "Answer is required"});
+            return res.status (400).json({error: "Answer is required"});
 
         }
         const clean_room = room_codes.trim();
