@@ -7,10 +7,10 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
    
     try{
-        const {room_codes, username, text} = req.body;
+        const {roomCode, username, text} = req.body;
         
-        if (typeof room_codes !== "string" || room_codes.trim() === ""){
-            return res.status (400).json({error: "room_code is required"});
+        if (typeof roomCodes !== "string" || roomCodes.trim() === ""){
+            return res.status (400).json({error: "roomCode is required"});
         }
         // player_id = username
 
@@ -25,13 +25,13 @@ router.post("/", async (req, res, next) => {
             return res.status (400).json({error: "Answer is required"});
 
         }
-        const clean_room = room_codes.trim();
+        const clean_room = roomCodes.trim();
         const clean_text = text.trim();
 
 
 
         const game = await prisma.game.findUnique({
-            where: {room_codes: clean_room}
+            where: {roomCodes: clean_room}
         });
         if (!game) {
             return res.status (404).json({error: "No game with that room code"});   
