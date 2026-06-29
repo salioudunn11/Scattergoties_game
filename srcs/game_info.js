@@ -6,7 +6,7 @@ const CATEGORY = [
   "Movies",
   "Soccer Players",
   "Countries",
-  "Baskeetball Players",
+  "Basketball Players",
   "Video Games",
   "Animals",
 ];
