@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 router.post("/", async (req, res, next) => {
+   
     try{
         const {room_codes, player_id, text} = req.body;
         
@@ -50,8 +51,10 @@ router.post("/", async (req, res, next) => {
             },
         });
         res.status(201).json({ accepted: true });
-    } catch (err) {
-        if ((err as {code?: string }).code === "P2002"){
+    } 
+        catch (err) {
+        
+            if ((err as {code?: string }).code === "P2002"){
             res.status(409).json({ error: "Answer already taken"});
             return;
         }
