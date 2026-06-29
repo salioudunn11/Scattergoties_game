@@ -7,26 +7,26 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
    
     try{
-        const {room_codes, player_id, text} = req.body;
+        const {room_codes, username, answers} = req.body;
         
         if (typeof room_codes !== "string" || room_codes.trim() === ""){
             return req.status (400).json({error: "roomCode is required"});
         }
         // player_id = username
 
-        if (typeof player_id !== "string" || player_id.trim() === ""){
+        if (typeof username !== "string" || username.trim() === ""){
             return req.status (400).json({error: "username is required"});
             
         }
 
         // text = answer
 
-        if (typeof text !== "string" || text.trim() === ""){
+        if (typeof answers !== "string" || answers.trim() === ""){
             return req.status (400).json({error: "answers is required"});
 
         }
         const clean_room = room_codes.trim();
-        const clean_answer = text.trim();
+        const clean_answer = answers.trim();
 
 
 
@@ -46,8 +46,8 @@ router.post("/", async (req, res, next) => {
         await prisma.answer.create({
             data: {
                 game_id: game.id,
-                player_id: player_id.trim(),
-                text: clean_answer,
+                username: username.trim(),
+                answers: clean_answer,
             },
         });
         res.status(201).json({ accepted: true });
