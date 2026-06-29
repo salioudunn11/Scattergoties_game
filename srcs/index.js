@@ -1,6 +1,6 @@
 import express from "express";
-import gamesRouter from "./routes/games.js";
-import answersRouter from "./routes/answers.js";
+import gamesRouter from "games.js";
+import answersRouter from "answers.js";
 
 const app = express();
 
