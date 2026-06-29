@@ -1,6 +1,6 @@
 const express = require("express");
 const prisma = require("/db");
-const { LETTERS, TOPICS, pick} = require("/game_info");
+const { LETTERS, CATEGORY, pick} = require("/game_info");
 
 const router = express.Router();
 
@@ -45,4 +45,4 @@ router.get("/", async (req,res,next) => {
     }
 });
 
-module.exports = router;
+module.export = router;

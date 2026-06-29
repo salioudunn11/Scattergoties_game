@@ -1,6 +1,6 @@
 const LETTERS = "ABCDEFGHIJKLMNOPRST".split("");
 
-const TOPICS = [
+const CATEGORY = [
   "Cities",
   "Foods",
   "Movies",
@@ -17,4 +17,4 @@ function pick(list) {
   return list[index];
 }
 
-module.exports = { LETTERS, CATEGORY, pick };
+module.export = { LETTERS, CATEGORY, pick };
