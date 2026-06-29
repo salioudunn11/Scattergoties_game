@@ -10,12 +10,12 @@ router.post("/", async (req, res, next) => {
         const {room_codes, username, text} = req.body;
         
         if (typeof room_codes !== "string" || room_codes.trim() === ""){
-            return req.status (400).json({error: "room_code is required"});
+            return res.status (400).json({error: "room_code is required"});
         }
         // player_id = username
 
         if (typeof username !== "string" || username.trim() === ""){
-            return req.status (400).json({error: "username is required"});
+            return res.status (400).json({error: "username is required"});
             
         }
 
