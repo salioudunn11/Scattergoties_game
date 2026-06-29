@@ -1,6 +1,7 @@
 {
   "name": "Scattergoties_game",
   "packageManager": "yarn@4.14.1",
+  "type": "module",
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
