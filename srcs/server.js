@@ -1,5 +1,5 @@
 import "dotenv/config";
-const app = require("./index.js");
+import app from "./index.js"
 
 const PORT = process.env.PORT || 8080;
 
