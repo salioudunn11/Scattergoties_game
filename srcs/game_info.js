@@ -1,6 +1,6 @@
-const LETTERS = "ABCDEFGHIJKLMNOPRST".split("");
+export const LETTERS = "ABCDEFGHIJKLMNOPRST".split("");
 
-const CATEGORY = [
+export const CATEGORY = [
   "Cities",
   "Foods",
   "Movies",
@@ -11,10 +11,7 @@ const CATEGORY = [
   "Animals",
 ];
 
-
-function pick(list) {
+export function pick(list) {
   const index = Math.floor(Math.random() * list.length);
   return list[index];
 }
-
-module.exports = { LETTERS, CATEGORY, pick };

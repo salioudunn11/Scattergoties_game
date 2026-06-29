@@ -1,11 +1,7 @@
-const express = require("express");
-<<<<<<< HEAD
-const prisma = require("./db");
-const { LETTERS, CATEGORY, pick} = require("./game_info");
-=======
-const prisma = require("./db.js");
-const { LETTERS, CATEGORY, pick} = require("/game_info");
->>>>>>> 160cfab (Idk)
+import express from "express";
+import prisma from "./db.js";
+import { LETTERS, CATEGORY, pick } from "./game_info.js";
+
 
 const router = express.Router();
 
@@ -50,4 +46,4 @@ router.get("/", async (req,res,next) => {
     }
 });
 
-module.exports = router;
+export default router;
