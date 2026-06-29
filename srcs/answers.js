@@ -7,10 +7,10 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
    
     try{
-        const {room_codes, username, answers} = req.body;
+        const {room_codes, username, text} = req.body;
         
         if (typeof room_codes !== "string" || room_codes.trim() === ""){
-            return req.status (400).json({error: "roomCode is required"});
+            return req.status (400).json({error: "room_code is required"});
         }
         // player_id = username
 
@@ -21,12 +21,12 @@ router.post("/", async (req, res, next) => {
 
         // text = answer
 
-        if (typeof answers !== "string" || answers.trim() === ""){
-            return req.status (400).json({error: "answers is required"});
+        if (typeof text !== "string" || text.trim() === ""){
+            return req.status (400).json({error: "Answer is required"});
 
         }
         const clean_room = room_codes.trim();
-        const clean_answer = answers.trim();
+        const clean_text = text.trim();
 
 
 
@@ -36,18 +36,18 @@ router.post("/", async (req, res, next) => {
         if (!game) {
             return res.status (404).json({error: "No game with that room code"});   
         }
-        if (clean_answer[0].toUpperCase() !== game.letter.toUpperCase()) {
+        if (clean_text[0].toUpperCase() !== game.letter.toUpperCase()) {
             return res
                 .status (400)
                 .json({error: `Answer must start with ${game.letter}`});
         }
 
 
-        await prisma.answer.create({
+        await prisma.text.create({
             data: {
                 game_id: game.id,
                 username: username.trim(),
-                answers: clean_answer,
+                text: clean_text,
             },
         });
         res.status(201).json({ accepted: true });
