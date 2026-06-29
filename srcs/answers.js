@@ -46,7 +46,6 @@ router.post("/", async (req, res, next) => {
         await prisma.answer.create({
             data: {
                 game_id: game.id,
-                username: username.trim(),
                 text: clean_text,
             },
         });
