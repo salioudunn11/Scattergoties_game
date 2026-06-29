@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", async (req, res, next) => {
    
     try{
-        const {roomCode, username, text} = req.body;
+        const {roomCodes, username, text} = req.body;
         
         if (typeof roomCodes !== "string" || roomCodes.trim() === ""){
             return res.status (400).json({error: "roomCode is required"});
